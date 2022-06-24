@@ -14,24 +14,23 @@
 </head>
 
 <body>
-    <div class="flex-center position-ref full-height">
-        @if (Route::has('login'))
-            <div class="top-right links">
-                @auth
-                    <a href="{{ url('/admin') }}">Home</a>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
-                    @endif
-                @endauth
-            </div>
-        @endif
-        <div id="root"></div>
-
+    <div class="container h-100 w-100">
+        <div class="h-100 w-100 row flex-column align-items-center justify-content-center text-white"> 
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <h1><a href="{{ url('/admin') }}">Home</a></h1>
+                    @else
+                        <h1>Ciao Ospite! @if (Route::has('register'))
+                                <a href="{{ route('register') }}">Registrati</a>
+                            @endif o fai il <a href="{{ route('login') }}">Login</a></h1>
+                    @endauth
+                </div>
+            @endif
+            <div id="root"></div>
+        </div>
     </div>
-    <script src="{{asset('js/front.js')}}" charset="utf-8"></script>
+    <script src="{{ asset('js/front.js') }}" charset="utf-8"></script>
 </body>
 
 </html>

@@ -49958,9 +49958,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/paolo/VsCode/progetti laravel/laravel-auth/resources/js/admin.js */"./resources/js/admin.js");
-__webpack_require__(/*! /Users/paolo/VsCode/progetti laravel/laravel-auth/resources/sass/admin.scss */"./resources/sass/admin.scss");
-module.exports = __webpack_require__(/*! /Users/paolo/VsCode/progetti laravel/laravel-auth/resources/sass/front.scss */"./resources/sass/front.scss");
+__webpack_require__(/*! /Users/paolo/VsCode/progetti laravel/laravel-boolpress/resources/js/admin.js */"./resources/js/admin.js");
+__webpack_require__(/*! /Users/paolo/VsCode/progetti laravel/laravel-boolpress/resources/sass/admin.scss */"./resources/sass/admin.scss");
+module.exports = __webpack_require__(/*! /Users/paolo/VsCode/progetti laravel/laravel-boolpress/resources/sass/front.scss */"./resources/sass/front.scss");
 
 
 /***/ })
