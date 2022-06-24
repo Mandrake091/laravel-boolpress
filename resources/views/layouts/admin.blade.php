@@ -45,7 +45,7 @@
                                 {{-- <a href="{{route('admin.categories.index')}}">Tutte le categorie</a> --}}
                             </ul>
                             <ul class="navbar-nav mr-auto">
-                                {{-- <a href="{{route('admin.categories.index')}}">Tutti i tag</a> --}}
+                                <a href="{{route('admin.tags.index')}}">Tutti i tag</a> 
                             </ul>
                             @endauth
                             @endif

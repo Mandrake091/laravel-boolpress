@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Doctrine\DBAL\Tools\Dumper;
+use Facade\Ignition\DumpRecorder\Dump;
+use Psy\VarDumper\Dumper as VarDumperDumper;
+use Symfony\Component\Console\Helper\Dumper as HelperDumper;
 
 class TagController extends Controller
 {
@@ -14,7 +20,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::paginate(12);
+        return view('admin.tags.index', compact('tags'));
     }
 
     /**
@@ -46,7 +53,10 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        //
+       $tags= Tag::all();
+        $tag = Tag::findOrFail($id);
+      
+        return view('admin.tags.show', compact('tags'));
     }
 
     /**
