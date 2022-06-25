@@ -13,8 +13,8 @@ use Symfony\Component\Console\Helper\Dumper as HelperDumper;
 
 class TagController extends Controller
 {
-        protected $validationRule = [
-        'name'=>'required|string|max:100',
+    protected $validationRule = [
+        'name' => 'required|string|max:100',
     ];
     /**
      * Display a listing of the resource.
@@ -34,7 +34,8 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.tags.create');
     }
 
     /**
@@ -45,8 +46,21 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $newTag = new Tag();
+        $newTag->name = $data['name'];
+        $slug = Str::of($data['name'])->slug('-');
+        $count = 1;
+        while (Tag::where('slug', $slug)->first()) {
+            $slug = Str::of($data['name'])->slug('-') . "-{$count}";
+            $count++;
+        }
+        $newTag->slug = $slug;
+        $newTag->save();
+        
+        return redirect()->route('admin.tags.show', $newTag->id);
     }
+
 
     /**
      * Display the specified resource.
@@ -56,9 +70,9 @@ class TagController extends Controller
      */
     public function show($id)
     {
-       
+
         $tag = Tag::findOrFail($id);
-      
+
         return view('admin.tags.show', compact('tag'));
     }
     /**
@@ -82,17 +96,17 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-      $request->validate($this->validationRule);
+        $request->validate($this->validationRule);
         $data = $request->all();
-        
-        if($tag->name != $data['name']){
+
+        if ($tag->name != $data['name']) {
             $tag->name = $data['name'];
             $slug = Str::of($tag->name)->slug('-');
-            if($slug != $tag->slug){
+            if ($slug != $tag->slug) {
                 $tag->slug = $this->getSlug($tag->name);
             }
         }
-     
+
         $tag->update();
         return redirect()->route('admin.tags.show', $tag->id);
     }
@@ -103,14 +117,17 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tag $tag)
     {
-        //
+        
+        $tag->delete();
+        return redirect()->route('admin.tags.index');
     }
-    private function getSlug($name){
+    private function getSlug($name)
+    {
         $slug = Str::of($name)->slug('-');
         $count = 1;
-        while( Tag::where('slug', $slug)->first() ){
+        while (Tag::where('slug', $slug)->first()) {
             $slug = Str::of($name)->slug('-') . "-{$count}";
             $count++;
         }

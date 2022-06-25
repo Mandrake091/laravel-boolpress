@@ -7,7 +7,6 @@
                 {{-- <img src="..." class="card-img-top" alt="..."> --}}
                 <div class="card-body">
                     <h5 class="card-title">Nome: {{ $tag->name }}</h5>
-                   
                 </div>
             </div>
         </div>

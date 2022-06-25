@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Post;
 use App\Category;
 use App\Tag;
+use App\Image;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class PostController extends Controller
         'category' => 'nullable|exists:categories,id',
         'tags' => 'nullable|exists:tags,id'
     ];
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -110,13 +111,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
-    
+
+
     public function update(Request $request, Post $post)
     {
         $request->validate($this->validationRule);
         $data = $request->all();
-        
+
         if($post->title != $data['title']){
             $post->title = $data['title'];
             $slug = Str::of($post->title)->slug('-');
@@ -124,11 +125,11 @@ class PostController extends Controller
                 $post->slug = $this->getSlug($post->title);
             }
         }
-       
+
         $post->category_id = $data['category_id'];
         $post->content = $data['content'];
         $post->published = isset($data['published']);
-        
+
         if(isset($data['tags'])){
         $post->tags()->sync($data['tags']);
         }
@@ -148,7 +149,7 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('admin.posts.index');
     }
-    
+
 private function getSlug($title){
         $slug = Str::of($title)->slug('-');
         $count = 1;
@@ -158,5 +159,5 @@ private function getSlug($title){
         }
         return $slug;
     }
-    
+
 }
