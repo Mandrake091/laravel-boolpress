@@ -42,7 +42,7 @@
                                 <a href="{{ route('admin.posts.index') }}">Tutti i post</a>
                             </ul>
                             <ul class="navbar-nav mr-auto">
-                                {{-- <a href="{{route('admin.categories.index')}}">Tutte le categorie</a> --}}
+                                <a href="{{route('admin.categories.index')}}">Tutte le categorie</a>
                             </ul>
                             <ul class="navbar-nav mr-auto">
                                 <a href="{{route('admin.tags.index')}}">Tutti i tag</a> 

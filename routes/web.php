@@ -27,7 +27,7 @@ Route::middleware('auth')
     Route::get('/', 'Homecontroller@index')->name('home');
     Route::resource('/posts', 'PostController');
     Route::resource('/tags', 'TagController');
-    Route::resource('/images', 'ImageController');
+    Route::resource('/categories', 'CategoryController');
 });
 
 Route::get("{any?}", function(){

@@ -70,9 +70,7 @@ class TagController extends Controller
      */
     public function show($id)
     {
-
-        $tag = Tag::findOrFail($id);
-
+        $tag = Tag::all();
         return view('admin.tags.show', compact('tag'));
     }
     /**

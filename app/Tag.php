@@ -6,11 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
-    public function category(){
+    public function tag(){
     return $this->belongsTo('App\Category');
-   }
-
-   public function posts(){
-    return $this->belongsToMany('App\Post');
    }
 }

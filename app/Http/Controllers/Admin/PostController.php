@@ -5,15 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Post;
 use App\Category;
 use App\Tag;
-use App\Image;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Doctrine\DBAL\Tools\Dumper;
-use Facade\Ignition\DumpRecorder\Dump;
-use Psy\VarDumper\Dumper as VarDumperDumper;
-use Symfony\Component\Console\Helper\Dumper as HelperDumper;
 
 class PostController extends Controller
 {

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class CategoryController extends Controller
 {
@@ -14,7 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::paginate(12);
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -24,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -35,7 +39,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $newCategory = new Category();
+        $newCategory->name = $data['name'];
+        $slug = Str::of($data['name'])->slug('-');
+        $count = 1;
+        while (Category::where('slug', $slug)->first()) {
+            $slug = Str::of($data['name'])->slug('-') . "-{$count}";
+            $count++;
+        }
+        $newCategory->slug = $slug;
+        $newCategory->save();
+
+        return redirect()->route('admin.categories.show', $newCategory->id);
     }
 
     /**
@@ -46,7 +62,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -57,7 +75,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
