@@ -2,20 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Doctrine\DBAL\Tools\Dumper;
-use Facade\Ignition\DumpRecorder\Dump;
-use Psy\VarDumper\Dumper as VarDumperDumper;
-use Symfony\Component\Console\Helper\Dumper as HelperDumper;
 
-class TagController extends Controller
+class ImageController extends Controller
 {
-        protected $validationRule = [
-        'name'=>'required|string|max:100',
-    ];
     /**
      * Display a listing of the resource.
      *
@@ -23,8 +14,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::paginate(12);
-        return view('admin.tags.index', compact('tags'));
+        //
     }
 
     /**
@@ -45,7 +35,25 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    $request->validate([
+          'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $image = new Image;
+
+        if ($request->file('file')) {
+          $imagePath = $request->file('file');
+          $imageName = $imagePath->getClientOriginalName();
+
+          $path = $request->file('file')->storeAs('uploads', $imageName, 'public');
+        }
+
+        $image->name = $imageName;
+        $image->path = '/storage/'.$path;
+        $image->save();
+
+        return back()->with('success', 'Image uploaded successfully');
+   
     }
 
     /**
@@ -56,11 +64,9 @@ class TagController extends Controller
      */
     public function show($id)
     {
-       
-        $tag = Tag::findOrFail($id);
-      
-        return view('admin.tags.show', compact('tag'));
+        //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -69,8 +75,7 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        $tag = Tag::findOrFail($id);
-        return view('admin.tags.edit', compact('tag'));
+        //
     }
 
     /**
@@ -80,21 +85,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(Request $request, $id)
     {
-      $request->validate($this->validationRule);
-        $data = $request->all();
         
-        if($tag->name != $data['name']){
-            $tag->name = $data['name'];
-            $slug = Str::of($tag->name)->slug('-');
-            if($slug != $tag->slug){
-                $tag->slug = $this->getSlug($tag->name);
-            }
-        }
-     
-        $tag->update();
-        return redirect()->route('admin.tags.show', $tag->id);
     }
 
     /**
@@ -106,14 +99,5 @@ class TagController extends Controller
     public function destroy($id)
     {
         //
-    }
-    private function getSlug($name){
-        $slug = Str::of($name)->slug('-');
-        $count = 1;
-        while( Tag::where('slug', $slug)->first() ){
-            $slug = Str::of($name)->slug('-') . "-{$count}";
-            $count++;
-        }
-        return $slug;
     }
 }

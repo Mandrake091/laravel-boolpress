@@ -20,13 +20,14 @@
     </div>
   </div>
 </div>
-
-    <a href="{{ route('admin.tags.create') }}" class="btn btn-primary">Crea nuovo tag</a>
+<div class="container">
+  <div class="row">
+      <a href="{{ route('admin.tags.create') }}" class="btn btn-primary">Crea nuovo tag</a>
     <table class="table">
         <thead>
-            <tr>
+            <tr class="text-white">
                 <th scope="col">#</th>
-                <th scope="col">Title</th>
+                <th scope="col">Name</th>
                 <th scope="col">Creation Date</th>
             </tr>
         </thead>
@@ -35,10 +36,10 @@
                 <tr class="text-white">
                     <td><a href="{{ route('admin.tags.show', $tag->id) }}">{{$tag->id}}</a></td>
                     <td><a href="{{ route('admin.tags.show', $tag->name) }}">{{$tag->name}} </a></td>
-                    <td></td>
-                    <td><a href="{{ route('admin.posts.edit', $tag->id) }}" class="btn btn-primary">Modifica</a></td>
+                    <td>{{ $tag->created_at }}</td>
+                    <td><a href="{{ route('admin.tags.edit', $tag->id) }}" class="btn btn-primary">Modifica</a></td>
                     <td>
-                        <form id="form" action="{{ route('admin.posts.destroy', $tag->id) }}" method="POST">
+                        <form id="form" action="{{ route('admin.tags.destroy', $tag->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" @@click="openModal($event, {{$tag->id}})" class="btn btn-danger">
@@ -49,5 +50,9 @@
             @endforeach
         </tbody>
     </table>
+
+  </div>
+</div>
+  
     {{$tags->links()}}
 @endsection

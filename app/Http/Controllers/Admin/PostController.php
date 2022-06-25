@@ -86,7 +86,6 @@ class PostController extends Controller
     {
         $categories= Category::all();
         $post = Post::findOrFail($id);
-      
         return view('admin.posts.show', compact('post','categories'));
     }
 
@@ -143,10 +142,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $post->tags()->synch([]);
-        $post = Post::findOrFail($id);
+        $post->tags()->sync([]);
         $post->delete();
         return redirect()->route('admin.posts.index');
     }
