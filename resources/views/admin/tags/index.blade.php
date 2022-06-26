@@ -35,7 +35,7 @@
             @foreach ($tags as $tag)
                 <tr class="text-white">
                     <td><a href="{{ route('admin.tags.show', $tag->id) }}">{{$tag->id}}</a></td>
-                    <td><a href="{{ route('admin.tags.show', $tag->name) }}">{{$tag->name}} </a></td>
+                    <td><a href="{{ route('admin.tags.show', $tag->id) }}">{{$tag->name}} </a></td>
                     <td>{{ $tag->created_at }}</td>
                     <td><a href="{{ route('admin.tags.edit', $tag->id) }}" class="btn btn-primary">Modifica</a></td>
                     <td>
