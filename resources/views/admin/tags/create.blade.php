@@ -9,10 +9,6 @@
                     <input type="text" class="form-control" id="name" name="name" value="{{ old('title') }}"
                     placeholder="inserisci tag" required>
                 </div>
-                
-              
-
-    
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

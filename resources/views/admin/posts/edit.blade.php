@@ -2,18 +2,19 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <form action="{{ route('admin.posts.update', $post->id) }}" method="POST">
+            <form class="text-white" action="{{ route('admin.posts.update', $post->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <h1>modifica dati</h1>
+                <h1>Modifica dati</h1>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="inserisci titolo"
+                    <input type="text" class="form-control" class="text-white" id="title" name="title" placeholder="inserisci titolo"
                         value="{{ $post->title }}">
                 </div>
                 <div class="mb-3 text-white">
                     <label for="content" class="form-label">Content</label>
                     <textarea name="content" type="text" id="content" cols="120" rows="20" value="{{ $post->content }}">
+                        {{ $post->content }}
                     </textarea>
                 </div>
                 <div class="mb-3">
@@ -31,8 +32,23 @@
                     @error('category_id')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-
                 </div>
+                <h5>Tags</h5>
+                        @foreach ($tags as $tag)
+                            <div class="form-check-inline">
+                                <input type="checkbox" class="form-check-input"
+                                    {{ in_Array($tag->id, old('tags', [])) ? 'checked' : '' }} id="{{ $tag->slug }}"
+                                    name="tags[]" value="{{ $tag->id }}">
+                                <label class="form-check-label" for="{{ $tag->slug }}">
+                                    {{ $tag->name }}
+                                </label>
+                            </div>
+                        @endforeach
+
+
+
+
+
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="published" name="published"
                         {{ old('published') ? 'checked' : '' }}>

@@ -5,7 +5,6 @@
     <li v-for="(post, index) in posts" :key="index">
     {{post.title}}
     <a href="#" @click="getDetail(post.slug, index)">Vedi dettaglio</a>
-
     <span v-if="post.detail">{{post.detail.slug}}</span>
     </li>
 
