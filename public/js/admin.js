@@ -37270,25 +37270,25 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-var app = new Vue({
-  el: "#app",
-  data: {
-    currentForm: null,
-    postid: null
+window.boolpress = {
+  currentForm: null,
+  postid: null,
+  openModal: function openModal(e, id) {
+    e.preventDefault();
+    this.postid = id;
+    this.currentForm = e.currentTarget.parentNode;
+    console.log(this.currentForm);
+    $("#deleteModal").modal("show");
   },
-  methods: {
-    openModal: function openModal(e, id) {
-      e.preventDefault();
-      this.postid = id;
-      this.currentForm = e.currentTarget.parentNode;
-      console.log(this.currentForm);
-      $('#deleteModal').modal('show');
-    },
-    submitForm: function submitForm() {
-      this.currentForm.submit();
-    }
+  previewImage: function previewImage() {
+    var oFReader = new FileReader();
+    oFReader.readAsDataURL(document.getElementById("image").files[0]);
+
+    oFReader.onload = function (oFREvent) {
+      document.getElementById("uploadPreview").src = oFREvent.target.result;
+    };
   }
-});
+};
 
 /***/ }),
 

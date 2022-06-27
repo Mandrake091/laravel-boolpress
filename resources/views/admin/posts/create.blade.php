@@ -29,7 +29,13 @@
                         @endforeach
                     </div>
                 </div>
-                <input type="file" name="image" id="image" placeholder="inserisci immagine">
+                <div class="form-group">
+                    <img id="uploadPreview" width="100" src="https://via.placeholder.com/300x200" alt="">
+                    <label for="image">Aggiungi immagine</label>
+                    <input type="file" name="image" id="image" onchange="boolpress.previewImage()">
+                </div>
+                
+
 
 
 

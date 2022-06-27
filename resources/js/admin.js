@@ -1,21 +1,24 @@
 require("./bootstrap");
 
-const app = new Vue({
-    el: "#app",
-    data: {
-        currentForm: null,
-        postid: null,
+
+window.boolpress = {
+    currentForm: null,
+    postid: null,
+
+    openModal(e, id) {
+        e.preventDefault();
+        this.postid = id;
+        this.currentForm = e.currentTarget.parentNode;
+        console.log(this.currentForm);
+        $("#deleteModal").modal("show");
     },
-    methods: {
-        openModal(e, id) {
-            e.preventDefault();
-            this.postid = id;
-            this.currentForm= e.currentTarget.parentNode;
-            console.log(this.currentForm);
-            $('#deleteModal').modal('show');
-        },
-        submitForm(){
-            this.currentForm.submit();
-        }
+
+    previewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("image").files[0]);
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src =
+                oFREvent.target.result;
+        };
     },
-});
+};
