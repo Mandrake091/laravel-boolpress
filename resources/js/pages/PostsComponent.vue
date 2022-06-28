@@ -1,8 +1,8 @@
 <template>
     <section v-if="posts.length > 0">
-        <h1 class="text-white text-center py-5">Tutti i posts</h1>
+        <h1 class="text-white text-center pt-5">Tutti i posts</h1>
         <div class="container">
-            <div class="row justify-content-between">
+            <div class="row justify-content-between pt-5 pb-5">
                 <div
                     v-for="(post, index) in posts"
                     :key="post.id"
@@ -42,7 +42,6 @@
         </div>
     </section>
 </template>
-
 <script>
 export default {
     name: "PostsComponent",
@@ -65,10 +64,13 @@ export default {
 section{
   background-image: url('https://img.wallpapersafari.com/desktop/1920/1080/45/34/Ms4ELT.jpg');
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-size: cover;
   h1{
     filter: drop-shadow(1px 6px 5px black);
+  }
+  .row{
+    row-gap: 50px;
   }
 }
   </style>
