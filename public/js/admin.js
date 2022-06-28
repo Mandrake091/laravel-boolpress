@@ -37272,12 +37272,12 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.boolpress = {
   currentForm: null,
-  postid: null,
+  postId: null,
   openModal: function openModal(e, id) {
     e.preventDefault();
-    this.postid = id;
+    this.postId = id;
     this.currentForm = e.currentTarget.parentNode;
-    console.log(this.currentForm);
+    $("#deleteModal-body").html("Sei sicuro di voler eliminare l'elemento con id: ".concat(this.postId));
     $("#deleteModal").modal("show");
   },
   previewImage: function previewImage() {
@@ -37287,6 +37287,9 @@ window.boolpress = {
     oFReader.onload = function (oFREvent) {
       document.getElementById("uploadPreview").src = oFREvent.target.result;
     };
+  },
+  submitForm: function submitForm() {
+    this.currentForm.submit();
   }
 };
 

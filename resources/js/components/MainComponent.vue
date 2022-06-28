@@ -1,16 +1,10 @@
 <template>
-<div>
-  <h1>Sono il Main</h1>
-  <ul>
-    <li v-for="(post, index) in posts" :key="index">
-    {{post.title}}
-    <a href="#" @click="getDetail(post.slug, index)">Vedi dettaglio</a>
-    <span v-if="post.detail">{{post.detail.slug}}</span>
-    </li>
 
-  </ul>
-</div>
-  
+<main>
+  <router-view>
+
+  </router-view>
+</main>
 </template>
 
 <script>
@@ -24,24 +18,21 @@ export default {
     }
   },
   methods:{
-    getDetail(slug, index){
-      Axios.get('api/posts/'+slug).then((response)=>{
-      console.log(response);
-      this.posts[index].detail = response.data;
 
-    })
+  //   getDetail(slug, index){
+  //     Axios.get('api/posts/'+slug).then((response)=>{
+  //     console.log(response.data);
+  //     this.posts[index].detail = response.data;
+  //   })
+  //   }
+  // },
+  // created(){
+  //   Axios.get('api/posts').then((response)=>{
+  //     console.log(response);
+  //     this.posts = response.data;
+  //   })
 
-
-    }
-  },
-  created(){
-    Axios.get('api/posts').then((response)=>{
-      console.log(response);
-      this.posts = response.data;
-
-    })
   }
-
 }
 </script>
 

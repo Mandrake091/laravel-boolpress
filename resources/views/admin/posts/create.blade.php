@@ -34,7 +34,7 @@
                     <label for="image">Aggiungi immagine</label>
                     <input type="file" name="image" id="image" onchange="boolpress.previewImage()">
                 </div>
-                
+
 
 
 

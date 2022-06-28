@@ -1,15 +1,15 @@
 require("./bootstrap");
 
-
 window.boolpress = {
     currentForm: null,
-    postid: null,
-
-    openModal(e, id) {
+    postId: null,
+    openModal(e,id) {
         e.preventDefault();
-        this.postid = id;
+        this.postId = id;
         this.currentForm = e.currentTarget.parentNode;
-        console.log(this.currentForm);
+        $("#deleteModal-body").html(
+            `Sei sicuro di voler eliminare l'elemento con id: ${this.postId}`
+        );
         $("#deleteModal").modal("show");
     },
 
@@ -21,4 +21,7 @@ window.boolpress = {
                 oFREvent.target.result;
         };
     },
+    submitForm() {
+        this.currentForm.submit();
+    }
 };
