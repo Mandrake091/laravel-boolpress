@@ -131,12 +131,14 @@ class PostController extends Controller
         $post->category_id = $data['category_id'];
         $post->content = $data['content'];
         $post->published = isset($data['published']);
-        
+
+ 
         if (isset($data['image'])) {
+            Storage::delete($post->image);
             $path_image = Storage::put("uploads", $data['image']);
             $post->image = $path_image;
         }
-
+        
         if (isset($data['tags'])) {
             $post->tags()->sync($data['tags']);
         }
