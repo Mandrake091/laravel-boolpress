@@ -21,7 +21,7 @@ class PostController extends Controller
         'published' => 'sometimes|accepted',
         'category' => 'nullable|exists:categories,id',
         'tags' => 'nullable|exists:tags,id',
-        'image' => 'nullable|image|mimes:jpeg,bmp,png,svg|max:2048'
+        'image' => 'nullable|image|mimes:jpeg,bmp,png,jpg,svg|max:2048'
     ];
 
     /**
@@ -59,11 +59,11 @@ class PostController extends Controller
         $data = $request->all();
         $newPost = new Post();
         $newPost->title = $data['title'];
-       
+
         $newPost->content = $data['content'];
         $newPost->published = isset($data['published']);
         $newPost->category_id = ($data['category_id']);
-        
+
         $newPost->slug = $this->getSlug($newPost->title);
 
         if (isset($data['image'])) {
@@ -71,11 +71,11 @@ class PostController extends Controller
             $newPost->image = $path_image;
         }
         $newPost->save();
-        
+
         if (isset($data['tags'])) {
             $newPost->tags()->sync($data['tags']);
         }
-        
+
         return redirect()->route('admin.posts.show', $newPost->id);
     }
 
@@ -131,6 +131,11 @@ class PostController extends Controller
         $post->category_id = $data['category_id'];
         $post->content = $data['content'];
         $post->published = isset($data['published']);
+        
+        if (isset($data['image'])) {
+            $path_image = Storage::put("uploads", $data['image']);
+            $post->image = $path_image;
+        }
 
         if (isset($data['tags'])) {
             $post->tags()->sync($data['tags']);
