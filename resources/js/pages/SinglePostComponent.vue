@@ -3,7 +3,7 @@
         <h1 class="text-white text-center">Singolo post</h1>
         <div class="container">
             <div class="row">
-                <div class="col-12 mx-auto">
+                <div class="col-10 mx-auto">
                     <div class="card mx-auto" v-if="post">
                         <img
                             :src="
@@ -89,29 +89,33 @@
                             :key="comment.id"
                             class="comment mt-4 text-justify"
                         >
-                            <img
-                                :src="
-                                    'https://picsum.photos/200/300?random=' +
-                                    comment.id
-                                "
-                                alt=""
-                                class="rounded-circle"
-                                width="40"
-                                height="40"
-                            />
-                            <p class="text-white">
-                                Lì
-                                <small>{{
-                                    comment.created_at
-                                        .substr(0, 19)
-                                        .replace("T", ", ")
-                                }}</small>
-                            </p>
-                            <h4 class="text-white">
-                                {{ comment.username }}
-                            </h4>
+                            <div class="row h-25">
+                                <img
+                                    :src="
+                                        'https://picsum.photos/200/300?random=' +
+                                        comment.id
+                                    "
+                                    alt=""
+                                    class="rounded-circle"
+                                    width="50"
+                                    height="50"
+                                />
+                                <div class="h-50">
+                                    <h5 class="text-white m-0">
+                                        {{ comment.username }}
+                                    </h5>
+                                   
+                                    <p class="text-white">
+                                        Lì
+                                        <small>{{
+                                            comment.created_at
+                                                .substr(0, 19)
+                                                .replace("T", ", ")
+                                        }}</small>
+                                    </p>
+                                </div>
+                            </div>
 
-                            <br />
                             <p class="text-white">
                                 {{ comment.content }}
                             </p>
@@ -182,24 +186,27 @@ section {
         resize: none;
     }
     .comment:nth-child(odd) {
-        border: 1px solid rgba(16, 46, 46, 1);
-        background-color: rgba(16, 46, 46, 0.973);
+        border: 1px solid rgba(16, 46, 46, 0.526);
+        background-color: rgba(16, 46, 46, 0.537);
         float: left;
         border-radius: 5px;
-        padding-left: 40px;
+        padding-left: 30px;
         padding-right: 30px;
         padding-top: 10px;
         width: 55%;
     }
     .comment:nth-child(even) {
-        border: 1px solid rgba(16, 46, 46, 1);
-        background-color: rgba(16, 46, 46, 0.973);
+        border: 1px solid rgba(16, 46, 46, 0.526);
+        background-color: rgba(16, 46, 46, 0.537);
         float: right;
         border-radius: 5px;
-        padding-left: 40px;
+        padding-left: 30px;
         padding-right: 30px;
         padding-top: 10px;
         width: 55%;
+    }
+    .comment>.row{
+        column-gap: 20px;
     }
 }
 </style>

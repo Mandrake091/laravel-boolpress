@@ -2340,6 +2340,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SinglePostComponent",
   data: function data() {
@@ -2470,7 +2474,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "section[data-v-253b705c] {\n  background-image: url(\"https://img.wallpapersafari.com/desktop/1920/1080/45/34/Ms4ELT.jpg\");\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n}\nsection h1[data-v-253b705c] {\n  filter: drop-shadow(1px 6px 5px black);\n}\nsection textarea[data-v-253b705c] {\n  width: 100%;\n  resize: none;\n}\nsection .comment[data-v-253b705c]:nth-child(odd) {\n  border: 1px solid rgb(16, 46, 46);\n  background-color: rgba(16, 46, 46, 0.973);\n  float: left;\n  border-radius: 5px;\n  padding-left: 40px;\n  padding-right: 30px;\n  padding-top: 10px;\n  width: 55%;\n}\nsection .comment[data-v-253b705c]:nth-child(even) {\n  border: 1px solid rgb(16, 46, 46);\n  background-color: rgba(16, 46, 46, 0.973);\n  float: right;\n  border-radius: 5px;\n  padding-left: 40px;\n  padding-right: 30px;\n  padding-top: 10px;\n  width: 55%;\n}", ""]);
+exports.push([module.i, "section[data-v-253b705c] {\n  background-image: url(\"https://img.wallpapersafari.com/desktop/1920/1080/45/34/Ms4ELT.jpg\");\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n}\nsection h1[data-v-253b705c] {\n  filter: drop-shadow(1px 6px 5px black);\n}\nsection textarea[data-v-253b705c] {\n  width: 100%;\n  resize: none;\n}\nsection .comment[data-v-253b705c]:nth-child(odd) {\n  border: 1px solid rgba(16, 46, 46, 0.526);\n  background-color: rgba(16, 46, 46, 0.537);\n  float: left;\n  border-radius: 5px;\n  padding-left: 30px;\n  padding-right: 30px;\n  padding-top: 10px;\n  width: 55%;\n}\nsection .comment[data-v-253b705c]:nth-child(even) {\n  border: 1px solid rgba(16, 46, 46, 0.526);\n  background-color: rgba(16, 46, 46, 0.537);\n  float: right;\n  border-radius: 5px;\n  padding-left: 30px;\n  padding-right: 30px;\n  padding-top: 10px;\n  width: 55%;\n}\nsection .comment > .row[data-v-253b705c] {\n  -moz-column-gap: 20px;\n       column-gap: 20px;\n}", ""]);
 
 // exports
 
@@ -4085,7 +4089,7 @@ var render = function () {
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12 mx-auto" }, [
+        _c("div", { staticClass: "col-10 mx-auto" }, [
           _vm.post
             ? _c("div", { staticClass: "card mx-auto" }, [
                 _c("img", {
@@ -4262,42 +4266,44 @@ var render = function () {
                       staticClass: "comment mt-4 text-justify",
                     },
                     [
-                      _c("img", {
-                        staticClass: "rounded-circle",
-                        attrs: {
-                          src:
-                            "https://picsum.photos/200/300?random=" +
-                            comment.id,
-                          alt: "",
-                          width: "40",
-                          height: "40",
-                        },
-                      }),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "text-white" }, [
-                        _vm._v(
-                          "\n                            Lì\n                            "
-                        ),
-                        _c("small", [
-                          _vm._v(
-                            _vm._s(
-                              comment.created_at
-                                .substr(0, 19)
-                                .replace("T", ", ")
-                            )
-                          ),
+                      _c("div", { staticClass: "row h-25" }, [
+                        _c("img", {
+                          staticClass: "rounded-circle",
+                          attrs: {
+                            src:
+                              "https://picsum.photos/200/300?random=" +
+                              comment.id,
+                            alt: "",
+                            width: "50",
+                            height: "50",
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "h-50" }, [
+                          _c("h5", { staticClass: "text-white m-0" }, [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(comment.username) +
+                                "\n                                "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "text-white" }, [
+                            _vm._v(
+                              "\n                                    Lì\n                                    "
+                            ),
+                            _c("small", [
+                              _vm._v(
+                                _vm._s(
+                                  comment.created_at
+                                    .substr(0, 19)
+                                    .replace("T", ", ")
+                                )
+                              ),
+                            ]),
+                          ]),
                         ]),
                       ]),
-                      _vm._v(" "),
-                      _c("h4", { staticClass: "text-white" }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(comment.username) +
-                            "\n                        "
-                        ),
-                      ]),
-                      _vm._v(" "),
-                      _c("br"),
                       _vm._v(" "),
                       _c("p", { staticClass: "text-white" }, [
                         _vm._v(
