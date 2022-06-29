@@ -54,11 +54,7 @@ export default {
                 {
                     label: "Contact",
                     routeName: "contact",
-                },
-                {
-                    label: "Single Post",
-                    routeName: "single post",
-                },
+                }
             ],
         };
     },

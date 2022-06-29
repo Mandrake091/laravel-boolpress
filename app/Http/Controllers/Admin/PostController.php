@@ -59,7 +59,6 @@ class PostController extends Controller
         $data = $request->all();
         $newPost = new Post();
         $newPost->title = $data['title'];
-
         $newPost->content = $data['content'];
         $newPost->published = isset($data['published']);
         $newPost->category_id = ($data['category_id']);
@@ -70,6 +69,7 @@ class PostController extends Controller
             $path_image = Storage::put("uploads", $data['image']);
             $newPost->image = $path_image;
         }
+        
         $newPost->save();
 
         if (isset($data['tags'])) {

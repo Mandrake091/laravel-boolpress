@@ -9,8 +9,9 @@
                     class="card"
                     style="width: 18rem"
                 >
+              
                     <img
-                        :src="`/storage/${post.image}`"
+                        :src="`/storage/${post.image}`!= '/storage/null' ? `/storage/${post.image}` : 'https://picsum.photos/500/250?random='+index"
                         class="card-img-top"
                         alt="..."
                     />
@@ -24,7 +25,16 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            Category: {{ post.category_id }}
+                            Category: {{ post.category.name }}
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush" v-if="post.tags">
+                        <li
+                            class="list-group-item"
+                            v-for="tag in post.tags"
+                            :key="tag.id"
+                        >
+                           Tag: {{ tag.name }}
                         </li>
                     </ul>
                     <div class="card-body">
@@ -60,17 +70,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-section{
-  background-image: url('https://img.wallpapersafari.com/desktop/1920/1080/45/34/Ms4ELT.jpg');
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  h1{
-    filter: drop-shadow(1px 6px 5px black);
-  }
-  .row{
-    row-gap: 50px;
-  }
+section {
+    background-image: url("https://img.wallpapersafari.com/desktop/1920/1080/45/34/Ms4ELT.jpg");
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    h1 {
+        filter: drop-shadow(1px 6px 5px black);
+    }
+    .row {
+        row-gap: 50px;
+    }
 }
-  </style>
+</style>
