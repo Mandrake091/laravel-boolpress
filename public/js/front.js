@@ -2279,6 +2279,67 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SinglePostComponent",
   data: function data() {
@@ -2409,7 +2470,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "section[data-v-253b705c] {\n  background-image: url(\"https://img.wallpapersafari.com/desktop/1920/1080/45/34/Ms4ELT.jpg\");\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n}\nsection h1[data-v-253b705c] {\n  filter: drop-shadow(1px 6px 5px black);\n}", ""]);
+exports.push([module.i, "section[data-v-253b705c] {\n  background-image: url(\"https://img.wallpapersafari.com/desktop/1920/1080/45/34/Ms4ELT.jpg\");\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n}\nsection h1[data-v-253b705c] {\n  filter: drop-shadow(1px 6px 5px black);\n}\nsection textarea[data-v-253b705c] {\n  width: 100%;\n  resize: none;\n}\nsection .comment[data-v-253b705c]:nth-child(odd) {\n  border: 1px solid rgb(16, 46, 46);\n  background-color: rgba(16, 46, 46, 0.973);\n  float: left;\n  border-radius: 5px;\n  padding-left: 40px;\n  padding-right: 30px;\n  padding-top: 10px;\n  width: 55%;\n}\nsection .comment[data-v-253b705c]:nth-child(even) {\n  border: 1px solid rgb(16, 46, 46);\n  background-color: rgba(16, 46, 46, 0.973);\n  float: right;\n  border-radius: 5px;\n  padding-left: 40px;\n  padding-right: 30px;\n  padding-top: 10px;\n  width: 55%;\n}", ""]);
 
 // exports
 
@@ -4024,40 +4085,35 @@ var render = function () {
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12 mx-auto py-5" }, [
+        _c("div", { staticClass: "col-12 mx-auto" }, [
           _vm.post
-            ? _c(
-                "div",
-                {
-                  staticClass: "card mx-auto",
-                  staticStyle: { width: "25rem" },
-                },
-                [
-                  _c("img", {
-                    staticClass: "card-img-top",
-                    attrs: {
-                      src:
-                        "/storage/" + _vm.post.image != "/storage/null"
-                          ? "/storage/" + _vm.post.image
-                          : "https://picsum.photos/500/250?random=" + _vm.index,
-                      alt: "...",
+            ? _c("div", { staticClass: "card mx-auto" }, [
+                _c("img", {
+                  staticClass: "card-img-top",
+                  attrs: {
+                    src:
+                      "/storage/" + _vm.post.image != "/storage/null"
+                        ? "/storage/" + _vm.post.image
+                        : "https://picsum.photos/500/250?random=" + _vm.post.id,
+                    alt: "...",
+                  },
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("small", { staticClass: "mr-3 text-white" }, [
+                    _vm._v("Creato il: " + _vm._s(_vm.formatDate)),
+                  ]),
+                  _vm._v(" "),
+                  _c("h5", { staticClass: "card-title" }, [
+                    _vm._v("Titolo: " + _vm._s(_vm.post.title)),
+                  ]),
+                  _vm._v(" "),
+                  _c("p", {
+                    staticClass: "card-text",
+                    domProps: {
+                      innerHTML: _vm._s("Contenuto: " + _vm.post.content),
                     },
                   }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("small", { staticClass: "mr-3" }, [
-                      _vm._v("Creato il: " + _vm._s(_vm.formatDate)),
-                    ]),
-                    _vm._v(" "),
-                    _c("h5", { staticClass: "card-title" }, [
-                      _vm._v(_vm._s(_vm.post.title)),
-                    ]),
-                    _vm._v(" "),
-                    _c("p", {
-                      staticClass: "card-text",
-                      domProps: { innerHTML: _vm._s(_vm.post.content) },
-                    }),
-                  ]),
                   _vm._v(" "),
                   _vm.post.tags.length > 0
                     ? _c(
@@ -4069,9 +4125,9 @@ var render = function () {
                           _vm._l(_vm.post.tags, function (tag) {
                             return _c("p", { key: tag.id }, [
                               _vm._v(
-                                "\n                            " +
+                                "\n                                " +
                                   _vm._s(tag.name) +
-                                  "\n                        "
+                                  "\n                            "
                               ),
                             ])
                           }),
@@ -4086,113 +4142,174 @@ var render = function () {
                         _vm._v(" "),
                         _c("p", [
                           _vm._v(
-                            "\n                            " +
+                            "\n                                " +
                               _vm._s(_vm.post.category.name) +
-                              "\n                        "
+                              "\n                            "
                           ),
                         ]),
                       ])
                     : _vm._e(),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c(
-                      "form",
-                      {
-                        on: {
-                          submit: function ($event) {
-                            $event.preventDefault()
-                            return _vm.addComment()
-                          },
+                ]),
+              ])
+            : _vm._e(),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-75 mx-auto mt-5" }, [
+          _c("h1", { staticClass: "text-center text-white" }, [
+            _vm._v("Commenta"),
+          ]),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              on: {
+                submit: function ($event) {
+                  $event.preventDefault()
+                  return _vm.addComment()
+                },
+              },
+            },
+            [
+              _c("div", { staticClass: "text-center pb-5" }, [
+                _c("label", {
+                  staticClass: "text-white",
+                  attrs: { for: "username" },
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.username,
+                      expression: "formData.username",
+                    },
+                  ],
+                  attrs: { type: "text", placeholder: "Inserisci il nome" },
+                  domProps: { value: _vm.formData.username },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.formData, "username", $event.target.value)
+                    },
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mx-auto text-center" }, [
+                _c(
+                  "label",
+                  { staticClass: "w-100", attrs: { for: "content" } },
+                  [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.content,
+                          expression: "formData.content",
+                        },
+                      ],
+                      staticClass: "rounded border-3",
+                      staticStyle: { height: "200px" },
+                      attrs: {
+                        type: "text",
+                        id: "content",
+                        name: "content",
+                        placeholder: "Write something..",
+                      },
+                      domProps: { value: _vm.formData.content },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.formData, "content", $event.target.value)
                         },
                       },
-                      [
-                        _c("label", { attrs: { for: "username" } }, [
-                          _vm._v("Inserisci il nome"),
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.formData.username,
-                              expression: "formData.username",
-                            },
-                          ],
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.formData.username },
-                          on: {
-                            input: function ($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.formData,
-                                "username",
-                                $event.target.value
-                              )
-                            },
-                          },
-                        }),
-                        _vm._v(" "),
-                        _c("label", { attrs: { for: "content" } }, [
-                          _vm._v("Inserisci il contenuto"),
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.formData.content,
-                              expression: "formData.content",
-                            },
-                          ],
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.formData.content },
-                          on: {
-                            input: function ($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.formData,
-                                "content",
-                                $event.target.value
-                              )
-                            },
-                          },
-                        }),
-                        _vm._v(" "),
-                        _c("button", { attrs: { type: "submit" } }, [
-                          _vm._v("Invia"),
-                        ]),
-                      ]
+                    }),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary mx-auto",
+                    attrs: { type: "submit" },
+                  },
+                  [
+                    _vm._v(
+                      "\n                            Invia\n                        "
                     ),
-                  ]),
-                  _vm._v(" "),
-                  _vm.post.comments.length > 0
-                    ? _c(
-                        "div",
-                        [
-                          _c("h4", [_vm._v("Commenti:")]),
-                          _vm._v(" "),
-                          _vm._l(_vm.post.comments, function (comment) {
-                            return _c("div", { key: comment.id }, [
-                              _c("p", [
-                                _c("strong", [
-                                  _vm._v(_vm._s(comment.username)),
-                                ]),
-                              ]),
-                              _vm._v(" "),
-                              _c("p", [_vm._v(_vm._s(comment.content))]),
-                            ])
-                          }),
-                        ],
-                        2
-                      )
-                    : _vm._e(),
-                ]
+                  ]
+                ),
+              ]),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 pb-4" }, [
+          _vm.post.comments.length > 0
+            ? _c(
+                "div",
+                _vm._l(_vm.post.comments, function (comment) {
+                  return _c(
+                    "div",
+                    {
+                      key: comment.id,
+                      staticClass: "comment mt-4 text-justify",
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "rounded-circle",
+                        attrs: {
+                          src:
+                            "https://picsum.photos/200/300?random=" +
+                            comment.id,
+                          alt: "",
+                          width: "40",
+                          height: "40",
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-white" }, [
+                        _vm._v(
+                          "\n                            Lì\n                            "
+                        ),
+                        _c("small", [
+                          _vm._v(
+                            _vm._s(
+                              comment.created_at
+                                .substr(0, 19)
+                                .replace("T", ", ")
+                            )
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("h4", { staticClass: "text-white" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(comment.username) +
+                            "\n                        "
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-white" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(comment.content) +
+                            "\n                        "
+                        ),
+                      ]),
+                    ]
+                  )
+                }),
+                0
               )
             : _vm._e(),
         ]),
