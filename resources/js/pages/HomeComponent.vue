@@ -1,9 +1,9 @@
 <template>
-    <section class="text-white">
-        <div class="container h-100">
+    <section class="">
+        <div class="container h-100 pt-5">
             <div class="row h-100 justify-content-center">
-                <div class="col-3">
-                    <h4>ciao</h4>
+                <div class="col-3 text-white">
+                    <h4>Categorie</h4>
                     <ul>
                         <li
                             v-for="(category, index) in categories"
@@ -20,48 +20,28 @@
                     </ul>
                 </div>
                 <div class="col-9">
-                    <div
-                        id="carouselExampleControls"
-                        class="carousel slide"
-                        data-ride="carousel"
-                    >
-                        <div class="carousel-inner">
-                            <div
-                                class="carousel-item active"
-                                v-for="(post, index) in posts"
-                                :key="index"
-                            >
-                                <img
-                                    class="d-block img-fluid"
-                                    :src="`/storage/${post.image}`"
-                                    alt="First slide"
-                                />
-                            </div>
-                        </div>
-                        <a
-                            class="carousel-control-prev"
-                            href="#carouselExampleControls"
-                            role="button"
-                            data-slide="prev"
-                        >
-                            <span
-                                class="carousel-control-prev-icon"
-                                aria-hidden="true"
-                            ></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a
-                            class="carousel-control-next"
-                            href="#carouselExampleControls"
-                            role="button"
-                            data-slide="next"
-                        >
-                            <span
-                                class="carousel-control-next-icon"
-                                aria-hidden="true"
-                            ></span>
-                            <span class="sr-only">Next</span>
-                        </a>
+                    <div v-if="posts.length > 0">
+                        <carousel :per-page="2" :mouse-drag="false">
+                            <slide v-for="(post, index) in posts" :key="index">
+                                <div class="card mx-auto" style="width: 18rem">
+                                    <img
+                                        class="img-fluid card-img-top"
+                                        :src="`/storage/${post.image}`"
+
+                                    />
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{post.title}}</h5>
+                                        <p class="card-text">
+                                           {{post.content}}
+                                        </p>
+                                        <a href="#" class="btn btn-primary"
+                                            >Go somewhere</a
+                                        >
+                                    </div>
+                                </div>
+                                <img />
+                            </slide>
+                        </carousel>
                     </div>
                 </div>
             </div>
@@ -70,8 +50,14 @@
 </template>
 
 <script>
+import { Carousel, Slide } from "vue-carousel";
 export default {
     name: "HomeComponent",
+    components: {
+        Carousel,
+        Slide,
+    },
+
     data() {
         return {
             categories: [],
@@ -105,5 +91,4 @@ section {
         filter: drop-shadow(1px 6px 5px black);
     }
 }
-
 </style>
