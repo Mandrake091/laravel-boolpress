@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use illuminate\Support\Facades\Auth;
 
 
 class PostController extends Controller
@@ -87,8 +88,15 @@ class PostController extends Controller
      */
     public function show($id)
     {
+       
         $categories = Category::all();
         $post = Post::findOrFail($id);
+        // $currentUser = Auth::user();
+        // if($currentUser->id != $post->user_id){
+            
+        // }
+        
+        
         return view('admin.posts.show', compact('post', 'categories'));
     }
 

@@ -3,7 +3,7 @@
         <h1 class="text-white text-center">Singolo post</h1>
         <div class="container">
             <div class="row">
-                <div class="col-10 mx-auto">
+                <div class="col-8 mx-auto">
                     <div class="card mx-auto" v-if="post">
                         <img
                             :src="
@@ -12,7 +12,7 @@
                                     : 'https://picsum.photos/500/250?random=' +
                                       post.id
                             "
-                            class="card-img-top"
+                            class="card-img-top w-50 mx-auto"
                             alt="..."
                         />
                         <div class="card-body">
@@ -82,44 +82,46 @@
                         <!-- <input v-model="formData.content" type="text"/> -->
                     </form>
                 </div>
-                <div class="col-12 pb-4">
-                    <div v-if="post.comments.length > 0">
-                        <div
-                            v-for="comment in post.comments"
-                            :key="comment.id"
-                            class="comment mt-4 text-justify"
-                        >
-                            <div class="row h-25">
-                                <img
-                                    :src="
-                                        'https://picsum.photos/200/300?random=' +
-                                        comment.id
-                                    "
-                                    alt=""
-                                    class="rounded-circle"
-                                    width="50"
-                                    height="50"
-                                />
-                                <div class="h-50">
-                                    <h5 class="text-white m-0">
-                                        {{ comment.username }}
-                                    </h5>
-                                   
-                                    <p class="text-white">
-                                        Lì
-                                        <small>{{
-                                            comment.created_at
-                                                .substr(0, 19)
-                                                .replace("T", ", ")
-                                        }}</small>
-                                    </p>
-                                </div>
-                            </div>
 
-                            <p class="text-white">
-                                {{ comment.content }}
-                            </p>
+                <div
+                    v-if="post && post.comments.length > 0"
+                    class="col-12 pb-4"
+                >
+                    <div
+                        v-for="comment in post.comments"
+                        :key="comment.id"
+                        class="comment mt-4 text-justify"
+                    >
+                        <div class="row h-25">
+                            <img
+                                :src="
+                                    'https://picsum.photos/200/300?random=' +
+                                    comment.id
+                                "
+                                alt=""
+                                class="rounded-circle"
+                                width="50"
+                                height="50"
+                            />
+                            <div class="h-50">
+                                <h5 class="text-white m-0">
+                                    {{ comment.username }}
+                                </h5>
+
+                                <p class="text-white">
+                                    Lì
+                                    <small>{{
+                                        comment.created_at
+                                            .substr(0, 19)
+                                            .replace("T", ", ")
+                                    }}</small>
+                                </p>
+                            </div>
                         </div>
+
+                        <p class="text-white">
+                            {{ comment.content }}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -144,6 +146,8 @@ export default {
             axios
                 .post("/api/comments", this.formData)
                 .then((response) => {
+                    this.formData.username = "";
+                    this.formData.content = "";
                     this.post.comments.push(response.data);
                 })
                 .catch((error) => {
@@ -158,9 +162,9 @@ export default {
             .then((response) => {
                 this.post = response.data;
                 this.formData.post_id = this.post.id;
-                console.log(this.post);
             })
             .catch((error) => {
+                console.log(error);
                 this.$router.push({ name: "page-404" });
             });
     },
@@ -175,9 +179,13 @@ export default {
 <style lang="scss" scoped>
 section {
     background-image: url("https://img.wallpapersafari.com/desktop/1920/1080/45/34/Ms4ELT.jpg");
+
     width: 100%;
     height: 100%;
     background-size: cover;
+    background-repeat: no-repeat;
+    
+
     h1 {
         filter: drop-shadow(1px 6px 5px black);
     }
@@ -205,8 +213,9 @@ section {
         padding-top: 10px;
         width: 55%;
     }
-    .comment>.row{
+    .comment > .row {
         column-gap: 20px;
     }
 }
+
 </style>
