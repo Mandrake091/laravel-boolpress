@@ -1,5 +1,5 @@
 <template>
-    <section class="">
+    <section class="pt-5">
         <div class="container h-100 pt-5">
             <div class="row h-100 justify-content-center">
                 <div class="col-3 text-white">

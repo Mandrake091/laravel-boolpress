@@ -1,4 +1,4 @@
-require("./bootstrap");
+
 import Vue from "vue";
 import VueCarousel from "vue-carousel";
 
